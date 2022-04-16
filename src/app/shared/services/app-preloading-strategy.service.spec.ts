@@ -6,7 +6,9 @@ describe('AppPreloadingStrategyService', () => {
   let service: AppPreloadingStrategyService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [AppPreloadingStrategyService],
+    });
     service = TestBed.inject(AppPreloadingStrategyService);
   });
 

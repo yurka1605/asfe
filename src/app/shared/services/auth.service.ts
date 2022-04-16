@@ -9,9 +9,7 @@ export class AuthService {
   private authSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.checkAuth());
   public isAuth$: Observable<boolean> = this.authSubject$.asObservable();
 
-  constructor(private storageService: StorageService) {
-    console.log('create instance of Auth');
-  }
+  constructor(private storageService: StorageService) {}
 
   login(): void {
     this.storageService.setItem(StorageKeysEnum.AUTHETIFICATION, true);
