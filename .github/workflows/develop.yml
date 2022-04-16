@@ -1,27 +1,24 @@
-# name: CI
+name: CI
 
-# on:
-#   push:
-#     branches:
-#       - develop
-#   pull_request:
-#     branches:
-#       - develop
+on:
+  pull_request:
+    branches:
+      - develop
 
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout master
-#         uses: actions/checkout@v3
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
 
-#       - name: install node 16.14.2
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '16.14.2'
+      - name: install node 16.14.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.14.2'
 
-#       - name: install dependencies
-#         run: npm install
+      - name: Setup
+        run: npm ci
 
-#       - name: unit tests
-#         run: npm run test
+      - name: build prod
+        run: npm run build
