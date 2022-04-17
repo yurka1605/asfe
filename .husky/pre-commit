@@ -1,11 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# npm run test && npm run lint && npx stylelint '**/*.scss'
-npm run test && npm run lint && npx stylelint '**/*.scss'
-npm run test && npm run lint && npx stylelint '**/*.scss'
-npm run test && npm run lint && npx stylelint '**/*.scss'
-npm run test && npm run lint && npx stylelint '**/*.scss'
-npm run test && npm run lint && npx stylelint '**/*.scss'
-npm run test && npm run lint && npx stylelint '**/*.scss'
-npm run test && npm run lint && npx stylelint '**/*.scss'
+npm test -- --no-watch --no-progress --browsers=ChromeHeadless
+npm run lint
+# && npx stylelint '**/*.scss'
