@@ -1,6 +1,18 @@
-<form class="form form-login" formGroupName="loginForm" novalidate (ngSubmit)="login()">
+<form
+  novalidate
+  class="form form-login"
+  [formGroup]="loginForm"
+  (ngSubmit)="login()">
   <h3>Авторизация</h3>
-  <input placeholder="E-mail" type="text" formControlName="login">
-  <input placeholder="Пароль" type="password" formControlName="password">
-  <input type="submit" [disabled]="loginForm.invalid" value="Войти">
+  <asfe-input
+    placeholder="E-mail"
+    formControlName="login"
+  ></asfe-input>
+  <asfe-password
+    placeholder="Пароль"
+    type="password"
+    formControlName="password"
+  ></asfe-password>
+  <pre>{{ loginForm.value | json }}</pre>
+  <button type="submit" [disabled]="loginForm.invalid">Войти</button>
 </form>

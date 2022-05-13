@@ -1,0 +1,15 @@
+<label *ngIf="label"
+  for="input"
+  [ngClass]="{
+    'float-label': true
+  }"
+>{{label}}</label>
+<input
+  name="input"
+  [value]="value"
+  [autocomplete]="autocomplete"
+  [placeholder]="placeholder"
+  [type]="type"
+  (blur)="onTouch()"
+  (input)="onInputValueChanges($event)"
+>

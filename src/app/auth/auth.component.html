@@ -2,12 +2,11 @@
   <div class="auth__column auth__column--left">
     <h2 class="welcome-text">Добро пожаловать</h2>
     <p>
-      <ng-container *ngIf="authService.isAuth$ | async; then user else authText"></ng-container>
+      <ng-container *ngIf="authService.isAuth$ | async as isAuth; else authText">
+        Желаете <button (click)="authService.logout()">выйти</button>?
+      </ng-container>
     </p>
   </div>
-  <!-- <svg class="auth__border" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path d="M0,32L30,26.7C60,21,120,11,180,53.3C240,96,300,192,360,208C420,224,480,160,540,138.7C600,117,660,139,720,160C780,181,840,203,900,181.3C960,160,1020,96,1080,101.3C1140,107,1200,181,1260,197.3C1320,213,1380,171,1410,149.3L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
-  </svg> -->
   <div class="auth__border">
     <svg viewBox="0 0 1440 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -21,8 +20,6 @@
   </div>
 </section>
 
-<ng-template #user>Желаете <button (click)="authService.logout()">выйти</button>?</ng-template>
 <ng-template #authText>
-  Если у вас уже есть аккаунт, вы можете <a routerLink="login">войти</a> или создать еще один
-  Если у вас еще нет аккаунта, вы можете <a routerLink="registration">зарегистрироваться</a>
+  Если у вас уже есть аккаунт, вы можете <a routerLink="login">войти</a>, в противном случае <a routerLink="registration">зарегистрироваться</a>
 </ng-template>
