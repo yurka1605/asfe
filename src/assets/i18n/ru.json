@@ -4,6 +4,8 @@
     "login-form-title": "Авторизация",
     "login-form-submit-btn-name": "Войти",
     "form-email-placeholder": "E-mail",
-    "form-password-placeholder": "Пароль"
+    "form-password-placeholder": "Пароль",
+    "login-form-privacy-policy-text": "Согласен с политикой конфиденциальности",
+    "login-form-show-password": "Показать пароль"
   }
 }

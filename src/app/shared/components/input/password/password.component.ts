@@ -6,7 +6,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputTypeEnum } from 'src/constants';
 import { BaseInputComponent } from '../base-input.component';
 
@@ -25,22 +25,18 @@ import { BaseInputComponent } from '../base-input.component';
 })
 export class PasswordComponent extends BaseInputComponent<string> implements OnInit {
   @Input() showToggle = false;
-
-  public isPasswordShown = false;
+  @Input() toggleText = 'Show password';
+  @Input() override placeholder = <string>InputTypeEnum.PASSWORD;
+  switcherControl = new FormControl(false);
 
   constructor(cdr: ChangeDetectorRef) {
     super(cdr);
   }
 
   ngOnInit(): void {
-    if (this.placeholder) {
-      this.placeholder = <string>InputTypeEnum.PASSWORD;
-    }
     this.type = InputTypeEnum.PASSWORD;
-  }
-
-  public togglePasswordVisibility(): void {
-    this.type = this.isPasswordShown ? InputTypeEnum.PASSWORD : InputTypeEnum.TEXT;
-    this.isPasswordShown = !this.isPasswordShown;
+    this.switcherControl.valueChanges.subscribe(value => {
+      this.type = value ? InputTypeEnum.TEXT : InputTypeEnum.PASSWORD;
+    });
   }
 }

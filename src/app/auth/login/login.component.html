@@ -1,18 +1,25 @@
 <form
   novalidate
   class="form form-login"
-  [formGroup]="loginForm"
+  [formGroup]="form"
   (ngSubmit)="login()">
-  <h3>Авторизация</h3>
+  <h3>{{'auth.login-form-title' | transloco}}</h3>
   <asfe-input
-    placeholder="E-mail"
+    [placeholder]="'auth.form-email-placeholder' | transloco"
     formControlName="login"
   ></asfe-input>
   <asfe-password
-    placeholder="Пароль"
-    type="password"
     formControlName="password"
+    [showToggle]="true"
+    [toggleText]="'auth.login-form-show-password' | transloco"
+    [placeholder]="'auth.form-password-placeholder' | transloco"
   ></asfe-password>
-  <pre>{{ loginForm.value | json }}</pre>
-  <button type="submit" [disabled]="loginForm.invalid">Войти</button>
+  <asfe-checkbox
+    [label]="'auth.login-form-privacy-policy-text' | transloco"
+    formControlName="privacyPolicy"
+  ></asfe-checkbox>
+  <asfe-button
+    type="submit"
+    [disabled]="isSubmitDisabled()"
+  >{{'auth.login-form-submit-btn-name' | transloco}}</asfe-button>
 </form>
