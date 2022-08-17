@@ -7,13 +7,15 @@ import { StorageService } from './services/session/abstract-session.service';
 import { AppPreloadingStrategyService } from './services/app-preloading-strategy.service';
 import { InputComponent } from './components/input/text/input.component';
 import { PasswordComponent } from './components/input/password/password.component';
-import { BaseInputComponent } from './components/input/base-input.component';
+import { ButtonComponent } from './components/button/button.component';
+import { CheckboxComponent } from './components/input/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
     InputComponent,
     PasswordComponent,
-    BaseInputComponent,
+    ButtonComponent,
+    CheckboxComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,8 @@ import { BaseInputComponent } from './components/input/base-input.component';
   exports: [
     InputComponent,
     PasswordComponent,
+    ButtonComponent,
+    CheckboxComponent,
   ],
   providers: [
     AuthService,
