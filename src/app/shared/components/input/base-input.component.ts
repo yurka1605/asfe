@@ -1,9 +1,7 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Input,
-  ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { InputTypeEnum } from 'src/constants';
@@ -11,11 +9,8 @@ import { InputTypeEnum } from 'src/constants';
 @Component({
   selector: 'asfe-base-input',
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./base-input.component.scss']
 })
-export class BaseInputComponent<T> implements ControlValueAccessor {
+export abstract class BaseInputComponent<T> implements ControlValueAccessor {
   @Input() label = '';
   @Input() autocomplete = 'off';
   @Input() placeholder = '';
@@ -45,14 +40,13 @@ export class BaseInputComponent<T> implements ControlValueAccessor {
     }
   }
 
-  protected onChange!: (val: string) => void;
+  protected onChange!: (val: string | boolean) => void;
   public onTouch!: () => void;
 
   constructor(protected cdr: ChangeDetectorRef) {}
 
-  public onInputValueChanges(event:Event): void {
-    const currentValue = (<HTMLInputElement>event.target).value;
-    this.onChange(currentValue);
+  public onInputValueChanges(event: Event): void {
+    this.onChange((<HTMLInputElement>event.target).value);
   }
 
   public writeValue(obj: T): void {

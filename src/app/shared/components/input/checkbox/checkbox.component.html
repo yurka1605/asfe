@@ -1,0 +1,10 @@
+<div class="checkbox">
+  <div
+    [ngClass]="{
+      'checkbox-slider': true,
+      'checkbox-slider--active': value
+    }"
+    (click)="toggle()"
+  ></div>
+  <div class="checkbox-label">{{label}}</div>
+</div>
