@@ -2,10 +2,19 @@
   "auth": {
     "welcome-title": "Добро пожаловать",
     "login-form-title": "Авторизация",
+    "registration-form-title": "Регистрация",
     "login-form-submit-btn-name": "Войти",
-    "form-email-placeholder": "E-mail",
-    "form-password-placeholder": "Пароль",
     "login-form-privacy-policy-text": "Согласен с политикой конфиденциальности",
-    "login-form-show-password": "Показать пароль"
+    "login-form-show-password": "Показать пароль",
+    "login-input-label": "Логин",
+    "password-input-label": "Пароль",
+    "password-confirm-label": "Подтвердите пароль"
+  },
+  "error": {
+    "required": "Поле обязательно для заполнения",
+    "passwordConfirm": "Пароли не совпадают",
+    "email": "Некорректный формат email",
+    "minlength": "Минимальная длина поля {{ requiredLength }} символов",
+    "maxlength": "Максимальная длина поля {{ requiredLength }} символов"
   }
 }
