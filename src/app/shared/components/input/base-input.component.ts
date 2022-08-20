@@ -1,20 +1,29 @@
 import {
-  ChangeDetectorRef,
   Component,
+  EventEmitter,
   Input,
+  Output,
 } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, ValidationErrors } from '@angular/forms';
 import { InputTypeEnum } from 'src/constants';
 
-@Component({
-  selector: 'asfe-base-input',
-  template: '',
-})
+type OnChangeFnType<T> = (val: T | string | null) => void;
+
+@Component({template: ''})
 export abstract class BaseInputComponent<T> implements ControlValueAccessor {
-  @Input() label = '';
-  @Input() autocomplete = 'off';
-  @Input() placeholder = '';
-  private _type = InputTypeEnum.TEXT;
+  @Input() label: string = '';
+  @Input() autocomplete: string = 'off';
+  @Input() placeholder: string = '';
+  @Input() autofocus: boolean = false;
+  @Input() error: ValidationErrors | null = null;
+  @Input() required: boolean = false;
+  @Output() typeChanged: EventEmitter<InputTypeEnum> = new EventEmitter<InputTypeEnum>();
+  public touched: boolean = false;
+  private _type: InputTypeEnum = InputTypeEnum.TEXT;
+
+  constructor() {
+
+  }
 
   get type(): InputTypeEnum {
     return this._type;
@@ -23,7 +32,7 @@ export abstract class BaseInputComponent<T> implements ControlValueAccessor {
   set type(val: InputTypeEnum) {
     if (val) {
       this._type = val;
-      this.cdr.detectChanges();
+      this.typeChanged.emit(val);
     }
   }
 
@@ -33,31 +42,44 @@ export abstract class BaseInputComponent<T> implements ControlValueAccessor {
     return <T>this._val;
   }
 
-  set value(val: T) {
+  set value(val: T | null) {
     if (val !== undefined) {
       this._val = val;
-      this.cdr.detectChanges();
+      if (this.onChange) {
+        this.onChange(val);
+      }
     }
   }
 
-  protected onChange!: (val: string | boolean) => void;
-  public onTouch!: () => void;
+  protected onChange: OnChangeFnType<T>;
+  public onTouch: () => void;
 
-  constructor(protected cdr: ChangeDetectorRef) {}
-
-  public onInputValueChanges(event: Event): void {
-    this.onChange((<HTMLInputElement>event.target).value);
+  markAsTouched() {
+    if (!this.touched) {
+      this.onTouch();
+      this.touched = true;
+    }
   }
 
-  public writeValue(obj: T): void {
+  onBlur(): void {
+    this.markAsTouched();
+    this.onTouch();
+  }
+
+  onInputValueChanges(event: Event): void {
+    const inputValue = (<HTMLInputElement>event.target).value as unknown as T;
+    this.writeValue(inputValue);
+  }
+
+  writeValue(obj: T | null): void {
     this.value = obj;
   }
 
-  public registerOnChange(fn: any): void {
+  registerOnChange(fn: OnChangeFnType<T>): void {
     this.onChange = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouch = fn;
   }
 }

@@ -1,10 +1,13 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   forwardRef,
+  Input,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { InputTypeEnum } from 'src/constants';
 import { BaseInputComponent } from '../base-input.component';
 
 @Component({
@@ -20,8 +23,18 @@ import { BaseInputComponent } from '../base-input.component';
     }
   ]
 })
-export class InputComponent extends BaseInputComponent<string> {
-  constructor(cdr: ChangeDetectorRef) {
-    super(cdr);
+export class InputComponent extends BaseInputComponent<string> implements OnChanges {
+  @Input() inputType: InputTypeEnum = InputTypeEnum.TEXT;
+  isFloating = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['inputType']) {
+      this.type = this.inputType;
+    }
+  }
+
+  blur(): void {
+    this.isFloating = false;
+    this.onBlur();
   }
 }

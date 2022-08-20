@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   forwardRef,
 } from '@angular/core';
@@ -21,10 +20,6 @@ import { BaseInputComponent } from '../base-input.component';
   ]
 })
 export class CheckboxComponent extends BaseInputComponent<boolean> {
-  constructor(cdr: ChangeDetectorRef) {
-    super(cdr);
-  }
-
   toggle(): void {
     this.writeValue(!this.value);
     this.onChange(this.value);

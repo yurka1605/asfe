@@ -9,6 +9,10 @@ import { InputComponent } from './components/input/text/input.component';
 import { PasswordComponent } from './components/input/password/password.component';
 import { ButtonComponent } from './components/button/button.component';
 import { CheckboxComponent } from './components/input/checkbox/checkbox.component';
+import { LabelComponent } from './components/input/label/label.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
+import { ErrorComponent } from './components/input/error/error.component';
+import { ErrorsPipe } from './pipes/error.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,10 @@ import { CheckboxComponent } from './components/input/checkbox/checkbox.componen
     PasswordComponent,
     ButtonComponent,
     CheckboxComponent,
+    LabelComponent,
+    AutofocusDirective,
+    ErrorComponent,
+    ErrorsPipe,
   ],
   imports: [
     CommonModule,
@@ -26,6 +34,8 @@ import { CheckboxComponent } from './components/input/checkbox/checkbox.componen
     PasswordComponent,
     ButtonComponent,
     CheckboxComponent,
+    AutofocusDirective,
+    ErrorsPipe,
   ],
   providers: [
     AuthService,
