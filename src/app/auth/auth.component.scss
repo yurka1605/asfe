@@ -7,6 +7,15 @@
   width: 100%;
   height: 100%;
 
+  ::ng-deep {
+    asfe-button {
+      width: 100px;
+      height: 40px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+  }
+
   .auth {
     position: relative;
     display: flex;

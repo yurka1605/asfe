@@ -7,6 +7,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthComponent } from './auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
+import { AuthFormService } from './services/auth-form.service';
 
 const routes: Routes = [
   {
@@ -32,5 +33,6 @@ const routes: Routes = [
     SharedModule,
     TranslocoModule,
   ],
+  providers: [AuthFormService],
 })
 export class AuthModule { }

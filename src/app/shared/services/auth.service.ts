@@ -19,18 +19,21 @@ export class AuthService {
     return this.changeAuthState(false);
   }
 
+  register(): Observable<boolean> {
+    return this.changeAuthState(true);
+  }
+
   private changeAuthState(isAuth: boolean): Observable<boolean> {
     try {
-      this.storageService.setItem(StorageKeysEnum.AUTHETIFICATION, isAuth);
+      this.storageService.setItem(StorageKeysEnum.AUTHENTICATION, isAuth);
       this.authSubject$.next(isAuth);
       return of(true);
     } catch (error) {
-      console.log(error);
       return of(false);
     }
   }
 
   private checkStorageAuth(): boolean {
-    return this.storageService.getItem(StorageKeysEnum.AUTHETIFICATION) === 'true';
+    return this.storageService.getItem(StorageKeysEnum.AUTHENTICATION) === 'true';
   }
 }
