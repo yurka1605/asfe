@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -11,7 +11,7 @@ import { AuthFormService } from './../services/auth-form.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public form: FormGroup = this.initializeForm();
+  public form: UntypedFormGroup = this.initializeForm();
 
   constructor(
     private authService: AuthService,
@@ -33,8 +33,8 @@ export class LoginComponent {
     }
   }
 
-  private initializeForm(): FormGroup {
-    return new FormGroup({
+  private initializeForm(): UntypedFormGroup {
+    return new UntypedFormGroup({
       login: this.authFormService.getLoginFormControl(),
       password: this.authFormService.getPasswordFormControl(),
     });

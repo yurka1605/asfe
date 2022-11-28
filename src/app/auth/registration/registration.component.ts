@@ -2,8 +2,8 @@ import { AuthService } from './../../shared/services/auth.service';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
@@ -11,7 +11,7 @@ import { InputTypeEnum } from 'src/constants';
 import { AuthFormService } from '../services/auth-form.service';
 import { Router } from '@angular/router';
 
-export function confirmPasswordValidator(passwordControl: FormControl): ValidatorFn {
+export function confirmPasswordValidator(passwordControl: UntypedFormControl): ValidatorFn {
   return ({ value }: AbstractControl): ValidationErrors | null => {
     return passwordControl.value !== value ? { passwordConfirm: { value } } : null;
   };
@@ -23,7 +23,7 @@ export function confirmPasswordValidator(passwordControl: FormControl): Validato
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
-  public form: FormGroup = this.initializeForm();
+  public form: UntypedFormGroup = this.initializeForm();
   passwordInputType = InputTypeEnum.PASSWORD;
 
   constructor(
@@ -46,10 +46,10 @@ export class RegistrationComponent {
     return this.form.invalid || !this.form.value.privacyPolicy;
   }
 
-  private initializeForm(): FormGroup {
+  private initializeForm(): UntypedFormGroup {
     const password = this.authFormService.getPasswordFormControl();
     const passwordConfirm = this.authFormService.getPasswordConfirmControl(confirmPasswordValidator(password));
-    return new FormGroup({
+    return new UntypedFormGroup({
       login: this.authFormService.getLoginFormControl(),
       password,
       passwordConfirm,

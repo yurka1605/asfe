@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import {
-  FormControl,
+  UntypedFormControl,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
@@ -32,7 +32,7 @@ export class PasswordComponent extends BaseInputComponent<string> implements OnI
   @Input() toggleText = 'Show password';
   @Input() override placeholder = <string>InputTypeEnum.PASSWORD;
   isFloating = false;
-  switcherControl = new FormControl(false);
+  switcherControl = new UntypedFormControl(false);
   destroy$ = new Subject<void>();
 
   ngOnInit(): void {
