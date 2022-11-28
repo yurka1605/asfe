@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { StorageService } from './session/abstract-session.service';
 
 describe('AuthService', () => {
   let service: AuthService;
   let storageServiceSpy: jasmine.SpyObj<StorageService>;
+  const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
   beforeEach(() => {
     const spy = jasmine.createSpyObj('StorageService', ['setItem', 'getItem']);
@@ -14,7 +16,8 @@ describe('AuthService', () => {
         {
           provide: StorageService,
           useValue: spy,
-        }
+        },
+        { provide: Router, useValue: routerSpy },
       ]
     });
     service = TestBed.inject(AuthService);

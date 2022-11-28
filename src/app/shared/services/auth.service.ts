@@ -2,6 +2,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { StorageService } from './session/abstract-session.service';
 import { StorageKeysEnum } from 'src/constants';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -9,7 +10,10 @@ export class AuthService {
   private authSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.checkStorageAuth());
   public isAuth$: Observable<boolean> = this.authSubject$.asObservable();
 
-  constructor(private storageService: StorageService) {}
+  constructor(
+    private router: Router,
+    private storageService: StorageService,
+  ) {}
 
   login(): Observable<boolean> {
     return this.changeAuthState(true);
@@ -27,6 +31,7 @@ export class AuthService {
     try {
       this.storageService.setItem(StorageKeysEnum.AUTHENTICATION, isAuth);
       this.authSubject$.next(isAuth);
+      this.router.navigate(['']);
       return of(true);
     } catch (error) {
       return of(false);

@@ -14,7 +14,6 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     const authSpy = jasmine.createSpyObj('AuthService', ['login', 'logout']);
-    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       imports: [
@@ -23,9 +22,8 @@ describe('LoginComponent', () => {
         SharedModule,
       ],
       providers: [
-        { provide: AuthService, useValue: authSpy },
-        { provide: Router, useValue: routerSpy },
         AuthFormService,
+        { provide: AuthService, useValue: authSpy },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })

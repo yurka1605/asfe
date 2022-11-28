@@ -4,7 +4,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegistrationComponent } from './registration.component';
 import { TranslocoModule } from '@ngneat/transloco';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Router } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -15,7 +14,6 @@ describe('RegistrationComponent', () => {
 
   beforeEach(async () => {
     const authSpy = jasmine.createSpyObj('AuthService', ['register']);
-    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     await TestBed.configureTestingModule({
       declarations: [ RegistrationComponent ],
       imports: [
@@ -24,9 +22,8 @@ describe('RegistrationComponent', () => {
         SharedModule,
       ],
       providers: [
-        { provide: AuthService, useValue: authSpy },
-        { provide: Router, useValue: routerSpy },
         AuthFormService,
+        { provide: AuthService, useValue: authSpy },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })

@@ -9,7 +9,6 @@ import {
 } from '@angular/forms';
 import { InputTypeEnum } from 'src/constants';
 import { AuthFormService } from '../services/auth-form.service';
-import { Router } from '@angular/router';
 
 export function confirmPasswordValidator(passwordControl: UntypedFormControl): ValidatorFn {
   return ({ value }: AbstractControl): ValidationErrors | null => {
@@ -27,18 +26,13 @@ export class RegistrationComponent {
   passwordInputType = InputTypeEnum.PASSWORD;
 
   constructor(
-    private router: Router,
     private authService: AuthService,
     private authFormService: AuthFormService,
   ) {}
 
   register(): void {
     if (this.form.valid) {
-      this.authService.register().subscribe(res => {
-        if (res) {
-          this.router.navigate(['']);
-        }
-      });
+      this.authService.register();
     }
   }
 
