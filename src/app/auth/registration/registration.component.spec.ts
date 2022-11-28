@@ -5,6 +5,9 @@ import { RegistrationComponent } from './registration.component';
 import { TranslocoModule } from '@ngneat/transloco';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -15,12 +18,17 @@ describe('RegistrationComponent', () => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     await TestBed.configureTestingModule({
       declarations: [ RegistrationComponent ],
-      imports: [ TranslocoModule ],
+      imports: [
+        TranslocoModule,
+        ReactiveFormsModule,
+        SharedModule,
+      ],
       providers: [
         { provide: AuthService, useValue: authSpy },
         { provide: Router, useValue: routerSpy },
         AuthFormService,
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   });

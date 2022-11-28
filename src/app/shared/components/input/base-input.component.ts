@@ -56,14 +56,14 @@ export abstract class BaseInputComponent<T> implements ControlValueAccessor {
 
   markAsTouched() {
     if (!this.touched) {
-      this.onTouch();
+      this.runOnTouch();
       this.touched = true;
     }
   }
 
   onBlur(): void {
     this.markAsTouched();
-    this.onTouch();
+    this.runOnTouch();
   }
 
   onInputValueChanges(event: Event): void {
@@ -81,6 +81,12 @@ export abstract class BaseInputComponent<T> implements ControlValueAccessor {
 
   registerOnTouched(fn: () => void): void {
     this.onTouch = fn;
+  }
+
+  private runOnTouch(): void {
+    if (this.onTouch) {
+      this.onTouch();
+    }
   }
 }
 

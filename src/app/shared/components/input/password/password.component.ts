@@ -31,7 +31,7 @@ export class PasswordComponent extends BaseInputComponent<string> implements OnI
   @Input() showToggle = false;
   @Input() toggleText = 'Show password';
   @Input() override placeholder = <string>InputTypeEnum.PASSWORD;
-  isFloating = false;
+  isFloating = true;
   switcherControl = new UntypedFormControl(false);
   destroy$ = new Subject<void>();
 

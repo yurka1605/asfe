@@ -5,11 +5,11 @@
   (ngSubmit)="login()">
   <h3>{{'auth.login-form-title' | transloco}}</h3>
   <asfe-input
+    formControlName="login"
     [required]="true"
     [error]="form.controls['login'].errors"
     [label]="'auth.login-input-label' | transloco"
     [placeholder]="'auth.login-input-label' | transloco"
-    formControlName="login"
   ></asfe-input>
   <asfe-password
     formControlName="password"

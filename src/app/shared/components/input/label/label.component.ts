@@ -12,7 +12,6 @@ import {
 })
 export class LabelComponent {
   @Input() label: string;
-  @Input() inputName: string;
-  @Input() isFloat: boolean;
+  @Input() isFloat: boolean = false;
   @Input() required: boolean = false;
 }

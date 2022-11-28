@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { CheckboxComponent } from './checkbox.component';
 
@@ -21,5 +22,12 @@ describe('CheckboxComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call toggle', () => {
+    const writeValueSpy = spyOn(component, 'writeValue');
+    const slider = fixture.debugElement.query(By.css('.checkbox-slider'));
+    slider.nativeElement.click();
+    expect(writeValueSpy).toHaveBeenCalled();
   });
 });

@@ -25,7 +25,7 @@ import { BaseInputComponent } from '../base-input.component';
 })
 export class InputComponent extends BaseInputComponent<string> implements OnChanges {
   @Input() inputType: InputTypeEnum = InputTypeEnum.TEXT;
-  isFloating = false;
+  isFloating = true;
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['inputType']) {

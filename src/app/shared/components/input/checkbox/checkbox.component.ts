@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
+  OnInit,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseInputComponent } from '../base-input.component';
@@ -19,9 +20,14 @@ import { BaseInputComponent } from '../base-input.component';
     }
   ]
 })
-export class CheckboxComponent extends BaseInputComponent<boolean> {
+export class CheckboxComponent extends BaseInputComponent<boolean> implements OnInit {
+  ngOnInit(): void {
+    this.value = false;
+  }
+
   toggle(): void {
-    this.writeValue(!this.value);
-    this.onChange(this.value);
+    const newValue = !this.value;
+    this.writeValue(newValue);
+    this.onChange(newValue);
   }
 }
