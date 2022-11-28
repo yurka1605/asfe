@@ -2,8 +2,8 @@
   <div class="auth__column auth__column--left">
     <h2 class="welcome-text">{{'auth.welcome-title' | transloco}}</h2>
     <p>
-      <ng-container *ngIf="isAuth() | async as isAuth; else authText">
-        Желаете <button (click)="logout()">выйти</button>?
+      <ng-container *ngIf="authService.isAuth$ | async as isAuth; else authText">
+        Желаете <button (click)="authService.logout()">выйти</button>?
       </ng-container>
     </p>
   </div>

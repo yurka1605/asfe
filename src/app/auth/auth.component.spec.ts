@@ -10,7 +10,7 @@ describe('AuthComponent', () => {
   let fixture: ComponentFixture<AuthComponent>;
 
   beforeEach(async () => {
-    const spy = jasmine.createSpyObj('AuthService', ['login', 'logout']);
+    const authServiceSpy = jasmine.createSpyObj('AuthService', ['login', 'logout']);
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -20,7 +20,7 @@ describe('AuthComponent', () => {
       providers: [
         {
           provide: AuthService,
-          useValue: spy,
+          useValue: authServiceSpy,
         }
       ]
     })
