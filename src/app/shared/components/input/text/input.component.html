@@ -1,0 +1,16 @@
+<div class="input">
+  <asfe-label
+    [required]="required"
+    [label]="label"
+    [isFloat]="isFloating || !!value"
+  ></asfe-label>
+  <input
+    [autofocus]="autofocus"
+    [autocomplete]="autocomplete"
+    [placeholder]="placeholder"
+    [type]="type"
+    (blur)="blur()"
+    (focus)="isFloating = true"
+    (input)="onInputValueChanges($event)">
+</div>
+<asfe-error *ngIf="!!error && touched" [errors]="error"></asfe-error>

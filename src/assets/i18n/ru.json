@@ -1,12 +1,20 @@
 {
-  "MENU_POINTS_SOLUTION": "Решения",
-  "MENU_POINTS_PLATFORM": "Платформа",
-  "MENU_POINTS_EDUCATION": "Обучаем",
-  "MENU_POINTS_TARIFFS": "Тарифы",
-  "MENU_POINTS_FAST_START": "Быстрый старт",
-
-  "LANG_SELECT_PLACEHOLDER": "Выберите язык",
-
-  "ACCOUNT_SETTINGS_LABEL": "Настройки",
-  "ACCOUNT_NOTIFICATION_LABEL": "Уведомления"
+  "auth": {
+    "welcome-title": "Добро пожаловать",
+    "login-form-title": "Авторизация",
+    "registration-form-title": "Регистрация",
+    "login-form-submit-btn-name": "Войти",
+    "login-form-privacy-policy-text": "Согласен с политикой конфиденциальности",
+    "login-form-show-password": "Показать пароль",
+    "login-input-label": "Логин",
+    "password-input-label": "Пароль",
+    "password-confirm-label": "Подтвердите пароль"
+  },
+  "error": {
+    "required": "Поле обязательно для заполнения",
+    "passwordConfirm": "Пароли не совпадают",
+    "email": "Некорректный формат email",
+    "minlength": "Минимальная длина поля {{ requiredLength }} символов",
+    "maxlength": "Максимальная длина поля {{ requiredLength }} символов"
+  }
 }

@@ -1,0 +1,11 @@
+:host {
+  &.ng-touched.ng-invalid {
+    .input input {
+      border: 1px solid red;
+    }
+  }
+
+  .input {
+    position: relative;
+  }
+}

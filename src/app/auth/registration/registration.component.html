@@ -1,1 +1,41 @@
-<p>registration works!</p>
+<form
+  novalidate
+  class="form form-login"
+  [formGroup]="form"
+  (ngSubmit)="register()">
+  <h3>{{'auth.registration-form-title' | transloco}}</h3>
+  <asfe-input
+    formControlName="login"
+    [required]="true"
+    [label]="'auth.login-input-label' | transloco"
+    [placeholder]="'auth.login-input-label' | transloco"
+    [error]="form.controls['login'].errors"
+  ></asfe-input>
+  <asfe-password
+    formControlName="password"
+    [required]="true"
+    [label]="'auth.password-input-label' | transloco"
+    [showToggle]="true"
+    [toggleText]="'auth.login-form-show-password' | transloco"
+    [placeholder]="'auth.password-input-label' | transloco"
+    [error]="form.controls['password'].errors"
+    (typeChanged)="passwordInputType = $event">
+      <asfe-input
+        formControlName="passwordConfirm"
+        [required]="true"
+        [inputType]="passwordInputType"
+        [label]="'auth.password-confirm-label' | transloco"
+        [placeholder]="'auth.password-confirm-label' | transloco"
+        [error]="form.controls['passwordConfirm'].errors"
+      ></asfe-input>
+  </asfe-password>
+  <asfe-checkbox
+    formControlName="privacyPolicy"
+    [required]="true"
+    [label]="'auth.login-form-privacy-policy-text' | transloco"
+  ></asfe-checkbox>
+  <asfe-button
+    type="submit"
+    [disabled]="isSubmitDisabled()"
+  >{{'auth.login-form-submit-btn-name' | transloco}}</asfe-button>
+</form>

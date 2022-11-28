@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DoCheck } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { AuthEnum } from '../entities/auth';
 
 @Component({
   selector: 'asfe-auth',
@@ -9,7 +9,6 @@ import { AuthEnum } from '../entities/auth';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthComponent implements DoCheck {
-
   public isActiveChildRoutes = false;
 
   constructor(public authService: AuthService) {}
