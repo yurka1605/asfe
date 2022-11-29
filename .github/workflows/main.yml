@@ -1,5 +1,19 @@
-name: Main-CI
-on: push
+name: Test and deploy from main to github pages
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -31,3 +45,37 @@ jobs:
       - name: Test
         run: |
           npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+
+      - name: install node 16.14.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.14.2'
+
+      - name: Setup
+        run: npm ci
+
+      - name: build prod
+        run: npm run build
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
