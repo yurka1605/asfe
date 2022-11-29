@@ -31,6 +31,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
+    "angular-cli-ghpages": "^1.0.5",
     "eslint": "^8.28.0",
     "husky": "^7.0.4",
     "jasmine-core": "~4.0.0",
@@ -51,6 +52,7 @@
     "lint": "ng lint",
     "test": "ng test",
     "build:analyze": "ng build --stats-json",
-    "analyzer": "webpack-bundle-analyzer dist/asfe/stats.json"
+    "analyzer": "webpack-bundle-analyzer dist/asfe/stats.json",
+    "deploy": "ng deploy --base-href=/asfe/"
   }
 }
