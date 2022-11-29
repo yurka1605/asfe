@@ -60,7 +60,7 @@ jobs:
           output-file: "false"
 
       - name: Deploy
-        with:
-          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+        env:
+          GITHUB-TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
         run: npm run deploy
 
