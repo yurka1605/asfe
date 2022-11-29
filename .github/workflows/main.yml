@@ -50,7 +50,7 @@ jobs:
         run: npm run lint
 
       - name: Test
-        run: npm run test -- --prod
+        run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
       - name: Conventional Changelog Action
         id: changelog
