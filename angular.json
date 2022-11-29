@@ -123,10 +123,7 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "baseHref": "https://yurka1605.github.io/asfe/"
-          }
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
