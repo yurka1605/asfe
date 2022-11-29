@@ -1,0 +1,48 @@
+$slider-width: 35px;
+$slider-height: 20px;
+$slider-padding: 3px;
+$slider-child-size: $slider-height - $slider-padding*2;
+
+:host {
+  .checkbox {
+    display: flex;
+    align-items: center;
+
+    &-label {
+      padding: 5px 5px 5px 10px;
+      font-size: 12px;
+    }
+
+    &-slider {
+      position: relative;
+      width: $slider-width;
+      min-width: $slider-width;
+      height: $slider-height;
+      padding: $slider-padding;
+      border-radius: calc($slider-height / 2);
+      background-color: #ccc;
+      transition: .4s;
+      user-select: none;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        position: relative;
+        display: block;
+        width: $slider-child-size;
+        height: $slider-child-size;
+        border-radius: calc($slider-child-size / 2);
+        background-color: #ffffff;
+        transition: .4s;
+      }
+
+      &--active {
+        background-color: #04AA6D;
+
+        &::before {
+          transform: translateX(calc($slider-width - $slider-height));
+        }
+      }
+    }
+  }
+}

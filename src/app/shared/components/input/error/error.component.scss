@@ -1,0 +1,16 @@
+@import 'src/assets/styles/_colors.scss';
+
+:host {
+  display: block;
+  padding: 0 5px;
+  color: $errors-color;
+  font-size: 12px;
+
+  .errors {
+    margin-top: -8px;
+    margin-bottom: 5px;
+    li {
+      text-align: right;
+    }
+  }
+}

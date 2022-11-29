@@ -1,0 +1,24 @@
+@import '../../../../assets/styles/colors.scss';
+
+:host {
+  button {
+    width: 100%;
+    min-width: 100px;
+    height: 100%;
+    min-height: 40px;
+    border: 0;
+    font-weight: bold;
+    padding: 0 15px;
+    border-radius: 4px;
+    background-color: $main-dark-color;
+    color: #ffffff;
+    cursor: pointer;
+    transition: .4s;
+
+    &:disabled {
+      color: #00000042;
+      background-color: #0000001f;
+      box-shadow: 0 0 #0003, 0 0 #00000024, 0 0 #0000001f;
+    }
+  }
+}

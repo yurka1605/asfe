@@ -1,0 +1,5 @@
+<label
+  *ngIf="label"
+  class="float-label"
+  [class.floating]="isFloat"
+>{{label}}{{required ? ' *' : ''}}</label>

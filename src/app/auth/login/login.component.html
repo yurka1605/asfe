@@ -1,0 +1,26 @@
+<form
+  novalidate
+  class="form form-login"
+  [formGroup]="form"
+  (ngSubmit)="login()">
+  <h3>{{'auth.login-form-title' | transloco}}</h3>
+  <asfe-input
+    formControlName="login"
+    [required]="true"
+    [error]="form.controls['login'].errors"
+    [label]="'auth.login-input-label' | transloco"
+    [placeholder]="'auth.login-input-label' | transloco"
+  ></asfe-input>
+  <asfe-password
+    formControlName="password"
+    [required]="true"
+    [showToggle]="true"
+    [error]="form.controls['password'].errors"
+    [label]="'auth.password-input-label' | transloco"
+    [toggleText]="'auth.login-form-show-password' | transloco"
+    [placeholder]="'auth.password-input-label' | transloco"
+  ></asfe-password>
+  <asfe-button type="submit" [disabled]="form.invalid">
+    {{'auth.login-form-submit-btn-name' | transloco}}
+  </asfe-button>
+</form>

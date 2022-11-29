@@ -1,0 +1,114 @@
+@import '../../assets/styles/colors.scss';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  ::ng-deep {
+    asfe-button {
+      width: 100px;
+      height: 40px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+  }
+
+  .auth {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: 80%;
+    max-width: 900px;
+    max-height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: $box-shadow-color;
+
+
+    &--authorized {
+      .auth__column {
+        &--left {
+          width: 100%;
+        }
+
+        &--light {
+          width: 0%;
+        }
+      }
+
+      .auth__border {
+        left: calc(100% - 70px);
+      }
+    }
+
+    &__column {
+      width: 50%;
+      padding: 18px 20px;
+      background-color: $main-dark-color;
+      color: $main-dark-text-color;
+      transition: all .3s linear;
+
+      &--light {
+        background-color: $main-primary-color;
+        color: $main-primary-text-color;
+      }
+
+      &--left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-right: 60px;
+      }
+
+      p {
+        margin-top: 20px;
+        text-align: center;
+      }
+    }
+
+    &__border {
+      position: absolute;
+      left: calc(50% - 27px);
+      height: 100%;
+      width: 30px;
+      overflow: hidden;
+      transition: all .3s linear;
+
+      svg {
+        width: 100%;
+        transform: scale(15) rotate(-180deg);
+        height: 114%;
+      }
+    }
+
+    ::ng-deep.form {
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        text-align: center;
+        font-size: 28px;
+        padding-bottom: 20px;
+      }
+
+      // &.form-login {
+
+      // }
+    }
+  }
+
+  a {
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+.welcome-text {
+  text-align: center;
+  font-size: 32px;
+}
