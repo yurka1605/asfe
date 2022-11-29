@@ -53,6 +53,6 @@
     "test": "ng test",
     "build:analyze": "ng build --stats-json",
     "analyzer": "webpack-bundle-analyzer dist/asfe/stats.json",
-    "deploy": "ng deploy"
+    "deploy": "ng deploy --base-href='asfe' --no-silent"
   }
 }
