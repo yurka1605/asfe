@@ -44,12 +44,12 @@ jobs:
       - name: Test
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
-      - name: Conventional Changelog Action
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
-        with:
-          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
-          output-file: "false"
+      # - name: Conventional Changelog Action
+      #   id: changelog
+      #   uses: TriPSs/conventional-changelog-action@v3
+      #   with:
+      #     github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+      #     output-file: "false"
 
       # Setup key
       - run: set -eu
