@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build --conf
+        run: npm run build -- --base-href='asfe'
 
       - name: Lint
         run: npm run lint
@@ -44,18 +44,16 @@ jobs:
       - name: Test
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
-      # - name: Conventional Changelog Action
-      #   id: changelog
-      #   uses: TriPSs/conventional-changelog-action@v3
-      #   with:
-      #     github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
-      #     output-file: "false"
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          output-file: "false"
 
-      # Setup key
-      - run: set -eu
-      - run: mkdir "$HOME/.ssh"
-      - run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
-      - run: chmod 600 "$HOME/.ssh/key"
-      # Deploy
-      - run: npm run deploy
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
