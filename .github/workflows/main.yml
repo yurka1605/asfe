@@ -3,32 +3,24 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
-  ci:
+  deploy:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: ['16.x', '18.x']
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules
         id: cache-nodemodules
-        uses: actions/cache@v3
+        uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
         with:
@@ -44,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: npm run build --conf
 
       - name: Lint
         run: npm run lint
@@ -59,8 +51,11 @@ jobs:
           github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
           output-file: "false"
 
-      - name: Deploy
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN  }}
-        run: npm run deploy
+      # Setup key
+      - run: set -eu
+      - run: mkdir "$HOME/.ssh"
+      - run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
+      - run: chmod 600 "$HOME/.ssh/key"
+      # Deploy
+      - run: npm run deploy
 
