@@ -38,7 +38,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --configuration=production
+        run: npm run build -- --configuration=production --base-href='asfe'
 
       - name: Lint
         run: npm run lint
@@ -58,4 +58,3 @@ jobs:
         with:
           folder: dist
           ssh-key: ${{ secrets.DEPLOY_KEY }}
-          target-folder: '../docs'
