@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --base-href='asfe'
+        run: npm run build -- --configuration=production --base-href='asfe'
 
       - name: Lint
         run: npm run lint
