@@ -58,4 +58,4 @@ jobs:
         with:
           folder: dist
           ssh-key: ${{ secrets.DEPLOY_KEY }}
-          target-folder: docs
+          target-folder: '../docs'
