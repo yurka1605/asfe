@@ -1,4 +1,6 @@
 name: Deploy release
+permissions:
+  contents: write
 on:
   push:
     branches:
@@ -56,4 +58,4 @@ jobs:
         with:
           folder: dist
           ssh-key: ${{ secrets.DEPLOY_KEY }}
-
+          target-folder: '.'
