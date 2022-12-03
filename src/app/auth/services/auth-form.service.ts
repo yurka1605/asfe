@@ -1,27 +1,27 @@
-import { UntypedFormControl, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, ValidatorFn, Validators } from '@angular/forms';
 import { Injectable } from "@angular/core";
 
 @Injectable()
 export class AuthFormService {
   constructor() {}
 
-  getPasswordConfirmControl(confirmValidator: ValidatorFn): UntypedFormControl {
-    return new UntypedFormControl(null, [
+  getPasswordConfirmControl(confirmValidator: ValidatorFn): FormControl<boolean | null> {
+    return new FormControl(null, [
       Validators.required,
       confirmValidator,
     ]);
   }
 
-  getPasswordFormControl(): UntypedFormControl {
-    return new UntypedFormControl(null, [
+  getPasswordFormControl(): FormControl<string | null> {
+    return new FormControl(null, [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(20),
     ]);
   }
 
-  getLoginFormControl(): UntypedFormControl {
-    return new UntypedFormControl(null,
+  getLoginFormControl(): FormControl<string | null> {
+    return new FormControl(null,
       [
         Validators.email,
         Validators.required
@@ -29,11 +29,14 @@ export class AuthFormService {
     );
   }
 
-  getPrivacyPolicyFormControl(): UntypedFormControl {
-    return new UntypedFormControl(false, Validators.required);
+  getPrivacyPolicyFormControl(): FormControl<boolean> {
+    return new FormControl(false, {
+      nonNullable: true,
+      validators: Validators.required,
+    });
   }
 
-  getOffersInformationFormControl(): UntypedFormControl {
-    return new UntypedFormControl(false);
+  getOffersInformationFormControl(): FormControl<boolean> {
+    return new FormControl(false, { nonNullable: true });
   }
 }
