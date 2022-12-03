@@ -47,7 +47,7 @@
   "scripts": {
     "prepare": "husky install",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --aot --configuration production",
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint",
     "test": "ng test",

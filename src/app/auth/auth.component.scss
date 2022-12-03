@@ -9,10 +9,18 @@
 
   ::ng-deep {
     asfe-button {
+      min-width: fit-content;
       width: 100px;
       height: 40px;
       margin: 0 auto;
       margin-top: 10px;
+    }
+
+    .question {
+      width: 100%;
+      padding-top: 10px;
+      text-align: center;
+      font-size: 12px;
     }
   }
 

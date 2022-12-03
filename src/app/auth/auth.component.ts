@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -8,12 +7,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthComponent implements DoCheck {
-  public isActiveChildRoutes = false;
-
+export class AuthComponent {
   constructor(public authService: AuthService) {}
-
-  ngDoCheck(): void {
-    this.isActiveChildRoutes = location.pathname.split('/').length > 2;
-  }
 }

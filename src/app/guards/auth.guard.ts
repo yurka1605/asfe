@@ -8,12 +8,18 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
   canActivate(): Observable<boolean> {
     return this.authService.isAuth$.pipe(
-      filter((isAuth: boolean) => !!isAuth),
-      tap(() => this.router.navigate(['auth'])),
+      tap((isAuth: boolean) => {
+        if (!isAuth) {
+          this.router.navigate(['auth/login']);
+        }
+      }),
     );
   }
 }

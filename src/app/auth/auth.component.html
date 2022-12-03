@@ -1,11 +1,11 @@
-<section class="auth auth--authorized" [class.auth--authorized]="!isActiveChildRoutes">
+<section class="auth">
   <div class="auth__column auth__column--left">
-    <h2 class="welcome-text">{{'auth.welcome-title' | transloco}}</h2>
-    <p>
-      <ng-container *ngIf="authService.isAuth$ | async as isAuth; else authText">
-        Желаете <button (click)="authService.logout()">выйти</button>?
-      </ng-container>
-    </p>
+    <ng-container *ngIf="authService.isAuth$ | async as isAuth; else authText">
+      <h2 class="welcome-text">Активный аккаунт - Iurii</h2>
+      <p>
+        <button (click)="authService.logout()">Выйти</button>
+      </p>
+    </ng-container>
   </div>
   <div class="auth__border">
     <svg viewBox="0 0 1440 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -21,6 +21,5 @@
 </section>
 
 <ng-template #authText>
-  <a routerLink="registration">Зарегистрируйтесь</a> или <a routerLink="login">войдите</a>
-  в уже существующий аккаунт
+  <h2 class="welcome-text">{{'auth.welcome-title' | transloco}}</h2>
 </ng-template>

@@ -33,7 +33,8 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "allowedCommonJsDependencies": [
-              "lodash-es"
+              "lodash-es",
+              "flat"
             ],
             "assets": [
               "src/favicon.ico",

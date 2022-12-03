@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, first, map, Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { StorageService } from './session/abstract-session.service';
 import { StorageKeysEnum } from 'src/constants';
@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-
-  private authSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.checkStorageAuth());
+  private authSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.getAuthState());
   public isAuth$: Observable<boolean> = this.authSubject$.asObservable();
 
   constructor(
@@ -15,30 +14,27 @@ export class AuthService {
     private storageService: StorageService,
   ) {}
 
-  login(): Observable<boolean> {
-    return this.changeAuthState(true);
+  login(): void {
+    this.changeAuthState();
   }
 
-  logout(): Observable<boolean> {
-    return this.changeAuthState(false);
+  logout(): void {
+    this.changeAuthState(false);
   }
 
-  register(): Observable<boolean> {
-    return this.changeAuthState(true);
+  register(): void {
+    this.changeAuthState();
   }
 
-  private changeAuthState(isAuth: boolean): Observable<boolean> {
-    try {
-      this.storageService.setItem(StorageKeysEnum.AUTHENTICATION, isAuth);
-      this.authSubject$.next(isAuth);
+  private changeAuthState(isAuth = true): void {
+    this.storageService.setItem(StorageKeysEnum.AUTHENTICATION, isAuth);
+    this.authSubject$.next(isAuth);
+    if (isAuth) {
       this.router.navigate(['']);
-      return of(true);
-    } catch (error) {
-      return of(false);
     }
   }
 
-  private checkStorageAuth(): boolean {
+  private getAuthState(): boolean {
     return this.storageService.getItem(StorageKeysEnum.AUTHENTICATION) === 'true';
   }
 }

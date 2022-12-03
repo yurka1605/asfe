@@ -4,6 +4,7 @@
     "login-form-title": "Авторизация",
     "registration-form-title": "Регистрация",
     "login-form-submit-btn-name": "Войти",
+    "registration-form-submit-btn-name": "Зарегистрироваться",
     "login-form-privacy-policy-text": "Согласен с политикой конфиденциальности",
     "login-form-show-password": "Показать пароль",
     "login-input-label": "Логин",
