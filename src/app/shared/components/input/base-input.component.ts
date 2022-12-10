@@ -1,5 +1,5 @@
 import {
-  Component,
+  Directive,
   EventEmitter,
   Input,
   Output,
@@ -9,7 +9,7 @@ import { InputTypeEnum } from 'src/constants';
 
 type OnChangeFnType<T> = (val: T | string | null) => void;
 
-@Component({template: ''})
+@Directive()
 export abstract class BaseInputComponent<T> implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() autocomplete: string = 'off';
