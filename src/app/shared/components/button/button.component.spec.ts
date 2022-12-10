@@ -30,7 +30,7 @@ describe('ButtonComponent', () => {
     component.disabled = true;
     fixture.detectChanges();
 
-    expect(button.nativeElement.type).toBe('submit');
+    expect(button.nativeElement.type).toBe('button');
     expect(button.nativeElement.disabled).toBe(true);
     expect(component.disabled).toBe(true);
   });
