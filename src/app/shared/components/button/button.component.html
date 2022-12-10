@@ -1,3 +1,12 @@
-<button [type]="type" [disabled]="disabled">
-  <ng-content></ng-content>
+<button
+  class="btn"
+  type="button"
+  [class.btn--secondary]="secondary"
+  [disabled]="disabled"
+>
+  <ng-container *ngIf="!label; else labelTmpl">
+    <ng-content></ng-content>
+  </ng-container>
 </button>
+
+<ng-template #labelTmpl>{{ label }}</ng-template>
