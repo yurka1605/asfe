@@ -17,6 +17,7 @@
     "registration-form-submit-btn-name": "Зарегистрироваться",
     "form-email-placeholder": "E-mail",
     "form-password-placeholder": "Пароль",
-    "login-form-privacy-policy-text": "Согласен с политикой конфиденциальности"
+    "login-form-privacy-policy-text": "Согласен с политикой конфиденциальности",
+    "logout": "Выйти"
   }
 }

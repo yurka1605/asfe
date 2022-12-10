@@ -1,7 +1,7 @@
 <button
   class="btn"
-  type="button"
   [class.btn--secondary]="secondary"
+  [type]="type"
   [disabled]="disabled"
 >
   <ng-container *ngIf="!label; else labelTmpl">

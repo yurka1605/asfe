@@ -9,7 +9,8 @@
     "login-form-show-password": "Показать пароль",
     "login-input-label": "Логин",
     "password-input-label": "Пароль",
-    "password-confirm-label": "Подтвердите пароль"
+    "password-confirm-label": "Подтвердите пароль",
+    "logout": "Выйти"
   },
   "error": {
     "required": "Поле обязательно для заполнения",

@@ -3,7 +3,9 @@
     <ng-container *ngIf="authService.isAuth$ | async as isAuth; else authText">
       <h2 class="welcome-text">Активный аккаунт - Iurii</h2>
       <p>
-        <button (click)="authService.logout()">Выйти</button>
+        <asfe-button [secondary]="true" (click)="authService.logout()">
+          {{'auth.logout' | transloco}}
+        </asfe-button>
       </p>
     </ng-container>
   </div>
