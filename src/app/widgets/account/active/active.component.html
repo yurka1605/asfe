@@ -1,0 +1,41 @@
+<div class="app-account-notification">
+  <!-- <ui-lib-overpanel panelClass="app-account-notification__panel" btnClass="app-account-notification__btn-icon">
+    <ui-lib-button btn
+      size="sm"
+      icon="bell"
+      [isText]="true"
+      [isRounded]="true"
+      (click)="getNotification()"
+    ></ui-lib-button>
+    <div content class="app-account-notification__content">
+      <h4 class="app-account-notification__content_title">
+        {{'ACCOUNT_NOTIFICATION_LABEL' | transloco}}
+      </h4>
+      <div class="app-account-notification__content_list">
+        <div *ngIf="(notifications$ | async)?.length; else emptyNotification">
+          <ul>
+            <li (click)="markRead(item)" *ngFor="let item of notifications$ | async">
+              <hr>
+              <h5>{{item.id}}</h5>
+              <p>{{item.author}}</p>
+              <p>{{item.text}}</p>
+              <hr>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ui-lib-overpanel> -->
+</div>
+<div class="app-account-info">
+  <div class="app-account-info__main">
+    <span class="app-account-info__main_name">{{(accountInfo?.name || accountInfo?.username || 'No name').toUpperCase()}}</span>
+    <span class="app-account-info__main_status">{{'status'.toUpperCase()}}</span>
+  </div>
+  <div class="app-account-info__img-wrap">
+    <!-- <ui-lib-default-user-icon className="app-account-info__img"></ui-lib-default-user-icon> -->
+  </div>
+</div>
+
+<ng-template #emptyNotification>Оповещений на данный момент нет</ng-template>
+

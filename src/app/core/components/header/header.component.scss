@@ -1,0 +1,10 @@
+.about-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  // height: $main-header-height;
+  background-color: var(--main-dark-color);
+  color: var(--main-dark-text-color);
+  border-bottom: 1px solid #f5f3f3;
+}

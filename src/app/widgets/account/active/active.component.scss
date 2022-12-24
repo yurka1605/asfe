@@ -1,0 +1,96 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .app-account {
+    &-info {
+      display: flex;
+
+      &__main {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0 5px;
+
+        &_name {
+          font-size: 15px;
+          font-weight: 600;
+          color: var(--main-primary-dark-text-color);
+        }
+
+        &_status {
+          font-size: 10px;
+          font-weight: bold;
+          color: var(--main-primary-dark-text-color);
+          text-transform: uppercase;
+          text-align: right;
+          width: 100%;
+        }
+      }
+
+      &__img-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 22%);
+        border-radius: 50%;
+        margin: 0 7px;
+        transition: all 0.3s linear;
+        cursor: pointer;
+        background-color: var(--main-light-color);
+
+        &:hover {
+          transform: scale(1.25);
+        }
+      }
+    }
+
+    &-notification {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 4px;
+
+      &__icon {
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        &:hover {
+          color: lighten(#000, 50%);
+          transform: scale(1.1);
+        }
+      }
+
+      &__content {
+        width: 300px;
+
+        &_title {
+          text-align: center;
+          height: 40px;
+          line-height: 40px;
+          border-bottom: 1px solid #fff;
+        }
+
+        &_list {
+          padding: .5rem .8rem .8rem;
+        }
+      }
+    }
+  }
+
+  ::ng-deep {
+    .app-account-info__img {
+      width: 25px;
+      height: 25px;
+    }
+
+    &.p-overlaypanel .p-overlaypanel-content {
+      padding: 0;
+    }
+  }
+
+}

@@ -1,0 +1,38 @@
+<div class="settings">
+  <!-- <ui-lib-overpanel panelClass="settings__panel" btnClass="settings__btn-icon">
+    <ui-lib-button btn
+      class="settings__icon"
+      size="sm"
+      [isText]="true"
+      [isRounded]="true"
+      icon="cog"
+    ></ui-lib-button>
+    <div content class="settings__content">
+      <h4 appTheme class="settings__content_title">
+        {{'ACCOUNT_SETTINGS_LABEL' | transloco}}
+      </h4>
+      <ui-lib-input-switcher
+        classes="settings__theme-switcher"
+        [checked]="(theme$ | async) === eThemes.Dark"
+        (changeSwitcher)="changeTheme($event)"
+      ></ui-lib-input-switcher>
+      <ui-lib-dropdown
+        [items]="languages$ | async"
+        [selectedItem]="currentLang$ | async"
+        placeholder="{{'LANG_SELECT_PLACEHOLDER' | transloco}}"
+        optionLabel="label"
+        (changeValue)="changeLanguage($event)"
+      ></ui-lib-dropdown>
+    </div>
+  </ui-lib-overpanel> -->
+</div>
+<!-- <asfe-account-active *ngIf="(isAuth$ | async); else deactivate"></asfe-account-active> -->
+
+<ng-template #deactivate>
+  <!-- <ui-lib-button
+    size="sm"
+    icon="sign-in"
+    [isText]="true"
+    [isRounded]="true"
+    (click)="login()"></ui-lib-button> -->
+</ng-template>

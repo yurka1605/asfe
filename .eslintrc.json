@@ -16,7 +16,8 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@ngrx/recommended-requiring-type-checking"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -34,7 +35,8 @@
             "prefix": "asfe",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@ngrx/no-typed-global-store": "off"
       }
     },
     {

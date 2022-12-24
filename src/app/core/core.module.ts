@@ -1,19 +1,25 @@
+import { MenuComponent } from './components/header/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 import { ViewComponent } from './view/view.component';
-
-const routes: Routes = [
-  { path: '', component: ViewComponent }
-];
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { WidgetModule } from "../widgets/widgets.module";
+import { CoreRoutingModule } from './core-routing.module';
+import { TranslocoRootModule } from '../transloco-root.module';
 
 @NgModule({
-  declarations: [
-    ViewComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-  ]
+    declarations: [
+      ViewComponent,
+      HeaderComponent,
+      FooterComponent,
+      MenuComponent,
+    ],
+    imports: [
+      CommonModule,
+      CoreRoutingModule,
+      TranslocoRootModule,
+      WidgetModule,
+    ]
 })
-export class CoreModule { }
+export class CoreModule {}

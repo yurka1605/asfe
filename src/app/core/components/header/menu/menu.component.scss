@@ -1,0 +1,17 @@
+.about-menu {
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+
+    li {
+      padding: 0 8px;
+      a {
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+      }
+    }
+  }
+}

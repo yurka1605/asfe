@@ -1,0 +1,17 @@
+$logo-height: 60px;
+$logo-width: 60px;
+
+.logo {
+  &-link {
+    display: block;
+    overflow: hidden;
+    height: $logo-height;
+    width: $logo-width;
+    cursor: pointer;
+  }
+  &-image {
+    display: block;
+    height: $logo-height;
+    width: $logo-width;
+  }
+}

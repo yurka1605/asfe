@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  height: 100%;
+
+  .settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__icon {
+      cursor: pointer;
+      transition: all 0.3s linear;
+
+      &:hover {
+        color: lighten(#000, 50%);
+        transform: scale(1.1);
+      }
+    }
+
+    &__theme-switcher {
+      margin-bottom: 5px;
+
+      &.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+        background-color: #4CAF50;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      &_title {
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .notification {
+    ::ng-deep.settings-panel {
+      min-width: 130px;
+    }
+  }
+}

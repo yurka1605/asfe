@@ -13,6 +13,8 @@ import { LabelComponent } from './components/input/label/label.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { ErrorComponent } from './components/input/error/error.component';
 import { ErrorsPipe } from './pipes/error.pipe';
+import { OverlayDirective } from './directives/overlay.directive';
+import { OverlayComponent } from './components/overlay/overlay.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ErrorsPipe } from './pipes/error.pipe';
     AutofocusDirective,
     ErrorComponent,
     ErrorsPipe,
+    OverlayDirective,
+    OverlayComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +40,7 @@ import { ErrorsPipe } from './pipes/error.pipe';
     CheckboxComponent,
     AutofocusDirective,
     ErrorsPipe,
+    OverlayDirective,
   ],
   providers: [
     AuthService,

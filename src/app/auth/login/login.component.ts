@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { LoginForm } from 'src/app/entities';
+import { LoginForm } from 'src/app/models';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { AuthFormService } from './../services/auth-form.service';
 

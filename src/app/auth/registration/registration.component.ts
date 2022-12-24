@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { InputTypeEnum } from 'src/constants';
 import { AuthFormService } from '../services/auth-form.service';
-import { RegistrationForm } from 'src/app/entities';
+import { RegistrationForm } from 'src/app/models';
 
 export function confirmPasswordValidator(passwordControl: FormControl<string | null>): ValidatorFn {
   return ({ value }: AbstractControl): ValidationErrors | null => {

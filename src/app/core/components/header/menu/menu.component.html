@@ -1,0 +1,7 @@
+<nav class="menu">
+  <ul class="menu__list">
+    <li *ngFor="let item of menuList">
+      <a [routerLink]="item.link">{{item.name | transloco}}</a>
+    </li>
+  </ul>
+</nav>
